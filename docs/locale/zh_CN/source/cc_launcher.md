@@ -95,12 +95,12 @@ bin/release BUILD_OUTPUT_DIR RELEASE_OUTPUT_DIR
 
 当调用 `release` 时，`BUILD_OUTPUT_DIR` 包含由 `build` 程序填充的构建，应该被视为只读输入。 `RELEASE_OUTPUT_DIR` 是 `release` 必须放置的由 peer 使用的构建的目录。
 
-`release` 完成后，peer 节点将从 `RELEASE_OUTPUT_DIR` 中消耗两种类型的元数据：
+`release` 完成后，peer 节点将从 `RELEASE_OUTPUT_DIR` 中消费两种类型的元数据：
 
 - CouchDB 的状态数据库索引定义
 - 外部链码服务器连接信息（`chaincode/server/connection.json`）
 
-如果链码需要 CouchDB 索引定义，`release` 负责将索引放置到 `RELEASE_OUTPUT_DIR` 下的 `statedb/couchdb/indexes` 目录中。索引必须有 `.json` 扩展。 有关详细信息，请参阅 [CouchDB indexes](couchdb_as_state_database.html#couchdb-indexes) 文档。
+如果链码需要 CouchDB 索引定义，`release` 负责将索引放置到 `RELEASE_OUTPUT_DIR` 下的 `statedb/couchdb/indexes` 目录中。索引必须以 `.json` 为扩展名。 有关详细信息，请参阅 [CouchDB indexes](couchdb_as_state_database.html#couchdb-indexes) 文档。
 
 在使用链码服务器实现的情况下，`release` 负责用与链码服务器地址以及和链码通信所需的任何 TLS 资产来填充 `chaincode/server/connection.json`。当服务器连接信息提供给 peer 节点时，`run` 将不会被调用。 有关详细信息，请参阅 [ChaincodeServer](https://jira.hyperledger.org/browse/FAB-14086) 文档。
 
